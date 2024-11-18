@@ -17,6 +17,8 @@ def name_formater(string):
   string = string.replace("\n\n#","")
   if(string == "\xa0"):
     return " "
+  if(string == "Bruce Brown, Jr."):
+    return "Bruce Brown"
   return string
 def team_name_formater(string):
   return string.replace(' Depth Chart',"").replace('2024-2025' ,"").replace("\n ","").replace("\n","")
@@ -46,6 +48,8 @@ def make_json(tables, names):
     team_name = team_name_formater(name.text)
     if("Los Angeles" in team_name):
       team_name = team_name.replace("Los Angeles","LA")
+    if("Sixers" in team_name):
+      team_name = team_name.replace("Sixers","76ers")
     rows = table.findAll("tr")[1:]
     for row in rows:
       pg.append(name_formater(row.findAll("td")[1].text))

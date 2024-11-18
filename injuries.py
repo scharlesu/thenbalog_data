@@ -47,8 +47,12 @@ def make_json(tables):
   json_obj = {"header": "NBA Injuries","teams": []}
 
   for table in tables:
-    team_name = table.find("span", attrs={"class":"TeamName"})
-    json_obj["teams"].append({"team_name": team_name.text, "players": ""})
+    team_name = table.find("span", attrs={"class":"TeamName"}).text
+    if "L.A." in team_name:
+      team_name=team_name.replace("L.A.","LA")
+    if "Golden St." in team_name:
+      team_name=team_name.replace("St.","State Warriors")
+    json_obj["teams"].append({"team_name": team_name, "players": ""})
 
   for(list_player, table) in zip(json_obj["teams"],tables):
     list_player["players"] = make_list_players(table)
@@ -57,9 +61,9 @@ def make_json(tables):
 
 
 #Add verification for if the json has changed and when it has then update json file, else don't update
-while 1:
-  with open("./thenbalog/_data/injuries.json","w") as outfile:
+#while 1:
+with open("./thenbalog/_data/injuries.json","w") as outfile:
       json.dump(make_json(get_URL_data()),outfile)
-  print("injuries.json updated @ "+time.strftime("%H:%M:%S", time.localtime()))
-  time.sleep(60)
+print("injuries.json updated @ "+time.strftime("%H:%M:%S", time.localtime()))
+  #time.sleep(60)
   
