@@ -19,6 +19,10 @@ def name_formater(string):
     return " "
   if(string == "Bruce Brown, Jr."):
     return "Bruce Brown"
+  if(string == "Robert Williams"):
+    return "Robert Williams III"
+  if(string == "Cam Thomas"):
+    return "Cameron Thomas"
   return string
 def team_name_formater(string):
   return string.replace(' Depth Chart',"").replace('2024-2025' ,"").replace("\n ","").replace("\n","")
@@ -46,7 +50,7 @@ def make_json(tables, names):
     pf = []
     c = []   
     team_name = team_name_formater(name.text)
-    if("Los Angeles" in team_name):
+    if("Los Angeles Clippers" in team_name):
       team_name = team_name.replace("Los Angeles","LA")
     if("Sixers" in team_name):
       team_name = team_name.replace("Sixers","76ers")
@@ -65,7 +69,7 @@ def make_json(tables, names):
 
 
 #Add verification for if the json has changed and when it has then update json file, else don't update
-with open("./thenbalog/_data/depth.json","w") as outfile:
+with open("../thenbalog/_data/depth.json","w") as outfile:
     json.dump(make_json(get_URL_data(),get_URL_names()),outfile)
 print("depth.json updated @ "+time.strftime("%H:%M:%S", time.localtime()))
   
