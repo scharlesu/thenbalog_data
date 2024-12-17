@@ -62,8 +62,9 @@ def make_json(tables):
 
 #Add verification for if the json has changed and when it has then update json file, else don't update
 #while 1:
-with open("../thenbalog/_data/injuries.json","w") as outfile:
-      json.dump(make_json(get_URL_data()),outfile)
-print("injuries.json updated @ "+time.strftime("%H:%M:%S", time.localtime()))
+#with open("../thenbalog/_data/injuries.json","w") as outfile:
+#      json.dump(make_json(get_URL_data()),outfile)
+#print("injuries.json updated @ "+time.strftime("%H:%M:%S", time.localtime()))
   #time.sleep(60)
-  
+def get_injuries():
+  return make_json(get_URL_data())

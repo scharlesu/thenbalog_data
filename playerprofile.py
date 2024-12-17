@@ -37,7 +37,9 @@ def make_json(tables):
 
 
 #Add verification for if the json has changed and when it has then update json file, else don't update
-with open("../thenbalog/_data/profiles.json","w") as outfile:
-    json.dump(make_json(get_URL_data()),outfile)
-print("profiles.json updated @ "+time.strftime("%H:%M:%S", time.localtime()))
-  
+#with open("../thenbalog/_data/profiles.json","w") as outfile:
+#    json.dump(make_json(get_URL_data()),outfile)
+#print("profiles.json updated @ "+time.strftime("%H:%M:%S", time.localtime()))
+
+def get_player_profile():
+  return make_json(get_URL_data()) 

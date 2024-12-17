@@ -69,7 +69,8 @@ def make_json(tables, names):
 
 
 #Add verification for if the json has changed and when it has then update json file, else don't update
-with open("../thenbalog/_data/depth.json","w") as outfile:
-    json.dump(make_json(get_URL_data(),get_URL_names()),outfile)
-print("depth.json updated @ "+time.strftime("%H:%M:%S", time.localtime()))
-  
+#with open("../thenbalog/_data/depth.json","w") as outfile:
+#    json.dump(make_json(get_URL_data(),get_URL_names()),outfile)
+#print("depth.json updated @ "+time.strftime("%H:%M:%S", time.localtime()))
+def get_depth():
+  return make_json(get_URL_data(),get_URL_names())
